@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, useEffect } from "react";
 
 const ANIMALS = ["all", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
@@ -11,7 +11,28 @@ const SearchParams: FC<Props> = () => {
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("all");
   const [breed, setBreed] = useState<string>("");
 
+  const [pets, setPets] = useState<string[]>([]);
+
   const breeds: string[] = [];
+
+  useEffect(() => {
+    //
+    //
+    requestPets()
+      .then((data) => {})
+      .catch(() => {
+        //
+      });
+  });
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+
+    const json: { pets: string[] } = await res.json();
+    setPets(json.pets);
+  }
 
   return (
     <div className="search-params">
