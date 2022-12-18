@@ -1,0 +1,23 @@
+{
+  "name": "react-pets-version-8",
+  "version": "1.0.0",
+  "description": "## workshop links and project links",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rade58/react-pets-v8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rade58/react-pets-v8/issues"
+  },
+  "homepage": "https://github.com/Rade58/react-pets-v8#readme",
+  "devDependencies": {
+    "prettier": "^2.8.1"
+  }
+}
