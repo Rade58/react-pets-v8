@@ -5,14 +5,25 @@ interface Props {
 }
 
 const SearchParams: FC<Props> = () => {
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<string>("Denver, CO");
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <label htmlFor="location">
           Location
-          <input id="location" value={location} placeholder="Location" />
+          <input
+            onChange={({ target: { value } }) => {
+              setLocation(value);
+            }}
+            id="location"
+            value={location}
+            placeholder="Location"
+          />
         </label>
         <button>Submit</button>
       </form>
