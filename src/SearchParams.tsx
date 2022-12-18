@@ -1,4 +1,6 @@
 import { FC, ReactNode, useState, useEffect } from "react";
+import { PropsI as PetPropsI } from "./Pet";
+import Pets from "./Pets";
 
 const ANIMALS = ["all", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
@@ -11,7 +13,7 @@ const SearchParams: FC<Props> = () => {
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("all");
   const [breed, setBreed] = useState<string>("");
 
-  const [pets, setPets] = useState<string[]>([]);
+  const [pets, setPets] = useState<PetPropsI[]>([]);
 
   const breeds: string[] = [];
 
@@ -30,7 +32,7 @@ const SearchParams: FC<Props> = () => {
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
 
-    const json: { pets: string[] } = await res.json();
+    const json: { pets: PetPropsI[] } = await res.json();
     setPets(json.pets);
   }
 
@@ -94,6 +96,7 @@ const SearchParams: FC<Props> = () => {
         </label>
         <button>Submit</button>
       </form>
+      <Pets pets={pets} />
     </div>
   );
 };

@@ -1,12 +1,18 @@
 // import React from "react";
-import Pet from "./Pet";
+import type { FC, ReactElement } from "react";
+import Pet, { PropsI as PetPropsI } from "./Pet";
 
-const Pets = () => {
+interface PropsI {
+  pets: PetPropsI[];
+  children?: ReactElement;
+}
+
+const Pets: FC<PropsI> = ({ pets }) => {
   return (
     <>
-      <Pet name={"Nakamaoto"} specie="dog" breed={"Shiba"} />
-      <Pet name={"Kevin"} specie="dog" breed={"Havanese"} />
-      <Pet name={"Pauly"} specie="bird" breed={"Parrot"} />
+      {pets.map((props) => {
+        return <Pet {...props} key={props.name} />;
+      })}
     </>
   );
 

@@ -3,11 +3,11 @@
 
 import type { ReactElement, FC } from "react";
 
-interface PropsI {
+export interface PropsI {
   name: string;
   specie: string;
   breed: string;
-  children: ReactElement;
+  children?: ReactElement;
 }
 
 const Pet: FC<PropsI> = ({ name, specie, breed }) => {
