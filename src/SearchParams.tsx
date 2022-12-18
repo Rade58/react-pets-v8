@@ -39,7 +39,7 @@ const SearchParams: FC<Props> = () => {
       return breed;
     });
 
-    setBreeds(brrs);
+    // setBreeds(brrs);
   }
 
   return (
@@ -47,6 +47,7 @@ const SearchParams: FC<Props> = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          requestPets().catch(() => {});
         }}
       >
         <label htmlFor="location">
