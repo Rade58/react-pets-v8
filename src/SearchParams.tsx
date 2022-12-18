@@ -22,7 +22,7 @@ const SearchParams: FC<Props> = () => {
     //
     //
     requestPets().catch(() => {});
-  }, []);
+  }, []); // eslint-disable-line
 
   async function requestPets() {
     const res = await fetch(
