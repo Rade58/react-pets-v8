@@ -1,6 +1,5 @@
 import { FC, ReactNode, useState, useEffect } from "react";
-import { PropsI as PetPropsI } from "./Pet";
-import Pets from "./Pets";
+import Pets, { PropsI as PetsPropsI } from "./Pets";
 
 const ANIMALS = ["all", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
@@ -8,14 +7,12 @@ interface Props {
   children?: ReactNode;
 }
 
-type PetsApiData = (PetPropsI & { id: string })[];
-
 const SearchParams: FC<Props> = () => {
   const [location, setLocation] = useState<string>("Denver, CO");
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("all");
   const [breed, setBreed] = useState<string>("");
 
-  const [pets, setPets] = useState<PetsApiData>([]);
+  const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
 
   const breeds: string[] = [];
 
@@ -34,7 +31,7 @@ const SearchParams: FC<Props> = () => {
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
 
-    const json: { pets: PetsApiData } = await res.json();
+    const json: { pets: PetsPropsI["pets"] } = await res.json();
     setPets(json.pets);
   }
 

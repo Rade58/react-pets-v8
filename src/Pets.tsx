@@ -2,7 +2,7 @@
 import type { FC, ReactElement } from "react";
 import Pet, { PropsI as PetPropsI } from "./Pet";
 
-interface PropsI {
+export interface PropsI {
   pets: (PetPropsI & { id: string })[];
   children?: ReactElement;
 }
@@ -11,7 +11,7 @@ const Pets: FC<PropsI> = ({ pets }) => {
   return (
     <>
       {pets.map((props) => {
-        return <Pet {...props} key={props.name} />;
+        return <Pet {...props} key={props.id} />;
       })}
     </>
   );
