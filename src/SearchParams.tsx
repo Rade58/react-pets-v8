@@ -31,7 +31,14 @@ const SearchParams: FC<Props> = () => {
         </label>
         <label htmlFor="animal">
           Animal
-          <select name="animal" id="animal">
+          <select
+            name="animal"
+            id="animal"
+            value={animal}
+            onChange={({ target: { value } }) => {
+              setAnimal(value as typeof ANIMALS[number]);
+            }}
+          >
             {ANIMALS.map((an) => {
               return (
                 <option value={an} key={an}>
