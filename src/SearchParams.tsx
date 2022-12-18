@@ -8,7 +8,7 @@ interface Props {
 }
 
 const SearchParams: FC<Props> = () => {
-  const [location, setLocation] = useState<string>("Denver, CO");
+  const [location, setLocation] = useState<string>("");
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("");
   const [breed, setBreed] = useState<string>("");
 
