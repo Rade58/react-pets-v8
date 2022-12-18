@@ -1,6 +1,16 @@
-import React from "react";
+// NO NEED TO IMPORT REACT ANYMORE
+// import React from "react";
 
-const Pet = ({ name, specie, breed }) => {
+import type { ReactElement, FC } from "react";
+
+interface PropsI {
+  name: string;
+  specie: string;
+  breed: string;
+  children: ReactElement;
+}
+
+const Pet: FC<PropsI> = ({ name, specie, breed }) => {
   return (
     <div>
       <h1>{name}</h1>
