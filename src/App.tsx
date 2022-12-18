@@ -1,6 +1,6 @@
 import React from "react";
 // import ReactDOM from "react-dom";
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 const Pet = ({ name, specie, breed }) => {
   return React.createElement("div", {}, [
