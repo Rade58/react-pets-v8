@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
   <title>Adopt-Pets</title>
 </head>
 <body>
   
-  <div id="root"></div>
+  <div id="root">not rendered</div>
+  <!--  -->
   <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <!--  -->
+  <script>
+    // 
+    console.log("Hello World");
+    const App  = () => {
+      return React.createElement(
+        "div",
+        {},
+        React.createElement("h1", {}, "Adopt Me!")
+      )
+    }
+  </script>
 </body>
 </html>
