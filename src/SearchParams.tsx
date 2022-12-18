@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from "react";
 
-const ANIMALS = ["bird", "cat", "dog", "rabit", "reptile"] as const;
+const ANIMALS = ["all", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
 interface Props {
   children?: ReactNode;
@@ -11,7 +11,7 @@ const SearchParams: FC<Props> = () => {
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("dog");
   const [breed, setBreed] = useState<string>("");
 
-  const breeds: string[] = [];
+  const breeds: string[] = ["all"];
 
   return (
     <div className="search-params">
