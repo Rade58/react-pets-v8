@@ -3,7 +3,7 @@ import type { FC, ReactElement } from "react";
 import Pet, { PropsI as PetPropsI } from "./Pet";
 
 interface PropsI {
-  pets: PetPropsI[];
+  pets: (PetPropsI & { id: string })[];
   children?: ReactElement;
 }
 
