@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState, useEffect } from "react";
 import Pets, { PropsI as PetsPropsI } from "./Pets";
 
-const ANIMALS = ["all", "bird", "cat", "dog", "rabit", "reptile"] as const;
+const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
 interface Props {
   children?: ReactNode;
@@ -9,22 +9,20 @@ interface Props {
 
 const SearchParams: FC<Props> = () => {
   const [location, setLocation] = useState<string>("Denver, CO");
-  const [animal, setAnimal] = useState<typeof ANIMALS[number]>("all");
+  const [animal, setAnimal] = useState<typeof ANIMALS[number]>("");
   const [breed, setBreed] = useState<string>("");
 
   const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
 
-  const breeds: string[] = [];
+  console.log({ pets });
+
+  const [breeds, setBreeds] = useState<string[]>([]);
 
   useEffect(() => {
     //
     //
-    requestPets()
-      .then((data) => {})
-      .catch(() => {
-        //
-      });
-  });
+    requestPets().catch(() => {});
+  }, []);
 
   async function requestPets() {
     const res = await fetch(
@@ -32,7 +30,16 @@ const SearchParams: FC<Props> = () => {
     );
 
     const json: { pets: PetsPropsI["pets"] } = await res.json();
+
+    console.log({ json });
+
     setPets(json.pets);
+
+    const brrs = json.pets.map(({ breed }) => {
+      return breed;
+    });
+
+    setBreeds(brrs);
   }
 
   return (
@@ -84,9 +91,9 @@ const SearchParams: FC<Props> = () => {
               setBreed(value);
             }}
           >
-            {breeds.map((br) => {
+            {breeds.map((br, i) => {
               return (
-                <option value={br} key={br}>
+                <option value={br} key={`${br} + ${i}`}>
                   {br}
                 </option>
               );
