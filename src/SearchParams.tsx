@@ -39,6 +39,7 @@ const SearchParams: FC<Props> = () => {
             value={animal}
             onChange={({ target: { value } }) => {
               setAnimal(value as typeof ANIMALS[number]);
+              setBreed("");
             }}
           >
             {ANIMALS.map((an) => {
