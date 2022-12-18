@@ -1,7 +1,5 @@
-// console.log("Hello World");
-// WE USED THIS BEFORE WE USED VITE
-// WE USED IT WHEN WE JUST OPENED OUR LOCAL HTML FILE IN BROWSER
-// --- NO OP --
+import React from "react";
+import ReactDOM from "react-dom";
 
 const Pet = ({ name, specie, breed }) => {
   return React.createElement("div", {}, [
