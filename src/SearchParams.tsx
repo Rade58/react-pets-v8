@@ -8,8 +8,10 @@ interface Props {
 
 const SearchParams: FC<Props> = () => {
   const [location, setLocation] = useState<string>("Denver, CO");
-
   const [animal, setAnimal] = useState<typeof ANIMALS[number]>("dog");
+  const [breed, setBreed] = useState<string>("");
+
+  const breeds: string[] = [];
 
   return (
     <div className="search-params">
@@ -43,6 +45,25 @@ const SearchParams: FC<Props> = () => {
               return (
                 <option value={an} key={an}>
                   {an}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <label htmlFor="breed">
+          Breed
+          <select
+            name="breed"
+            id="breed"
+            value={breed}
+            onChange={({ target: { value } }) => {
+              setBreed(value);
+            }}
+          >
+            {breeds.map((br) => {
+              return (
+                <option value={br} key={br}>
+                  {br}
                 </option>
               );
             })}
