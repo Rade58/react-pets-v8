@@ -1,9 +1,21 @@
 import type { QueryFunction } from "@tanstack/react-query";
 
-const fetchPet: QueryFunction<unknown, [string, string]> = async ({
+export interface DataI {
+  pets: {
+    id: string;
+    name: string;
+    animal: string;
+    breed: string;
+    city: string;
+    state: string;
+  }[];
+}
+
+const fetchPet: QueryFunction<DataI, [string, string]> = async ({
   queryKey,
 }) => {
-  const id = queryKey[1];
+  // SECOND THING THAT WILL BE PASSED TO useQuery BY US
+  const id = queryKey[1]; // BECAUSE FIRST THING NEEDS TO BE A KEY WE MAKE UP ALSO
 
   const apiRes = await fetch(`http://pets-v2.dev-apis.com/pets?id=${id}`);
 
@@ -11,7 +23,7 @@ const fetchPet: QueryFunction<unknown, [string, string]> = async ({
     throw new Error(`/details/${id} fetch not ok`);
   }
 
-  return apiRes.json();
+  return apiRes.json() as Promise<DataI>;
 };
 
 export default fetchPet;
