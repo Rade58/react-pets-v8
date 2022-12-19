@@ -4,6 +4,7 @@
 import type { ReactElement, FC } from "react";
 
 export interface PropsI {
+  id: string;
   name: string;
   animal: string;
   breed: string;
@@ -12,13 +13,25 @@ export interface PropsI {
   children?: ReactElement;
 }
 
-const Pet: FC<PropsI> = ({ name, animal, breed }) => {
+const Pet: FC<PropsI> = ({ id, name, animal, breed, images, location }) => {
+  let hero = "http://pets-images.dev-apis.com/pets/none.jpg";
+
+  if (images.length) {
+    hero = images[0];
+  }
+
   return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{animal}</h2>
-      <h3>{breed}</h3>
-    </div>
+    <a href={`/details/${id}`} className="pet">
+      <div className="image-container">
+        <img src={hero} alt={name} />
+      </div>
+      <div className="info">
+        <h1>{name}</h1>
+        <h2>
+          {animal} - {breed} - {location}
+        </h2>
+      </div>
+    </a>
   );
   /* 
   return React.createElement("div", {}, [
