@@ -17,14 +17,14 @@ const Details: FC<Props> = () => {
   if (results.isLoading) {
     return (
       <div className="loading-pane">
-        <h2 className="loading">🖕</h2>
+        <h2 className="loader">🖕</h2>
       </div>
     );
   }
   if (!results.data?.pets) {
     return (
       <div className="loading-pane">
-        <h2 className="loading">🖕</h2>
+        <h2 className="loader">🖕</h2>
       </div>
     );
   }
