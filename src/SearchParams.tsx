@@ -1,4 +1,5 @@
 import { FC, ReactNode, useState, useEffect } from "react";
+import useBreedList from "./hooks/useBreedList";
 import Pets, { PropsI as PetsPropsI } from "./Pets";
 
 export const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
@@ -18,7 +19,7 @@ const SearchParams: FC<Props> = () => {
 
   console.log({ pets });
 
-  const [breeds, setBreeds] = useState<string[]>([]);
+  const { breedList: breeds, status: breedsStatus } = useBreedList(animal);
 
   useEffect(() => {
     //
@@ -86,7 +87,7 @@ const SearchParams: FC<Props> = () => {
         <label htmlFor="breed">
           Breed
           <select
-            disabled={breeds.length === 0}
+            disabled={breedsStatus !== "loaded"}
             name="breed"
             id="breed"
             value={breed}
