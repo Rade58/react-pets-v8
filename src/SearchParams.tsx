@@ -1,7 +1,9 @@
 import { FC, ReactNode, useState, useEffect } from "react";
 import Pets, { PropsI as PetsPropsI } from "./Pets";
 
-const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
+export const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
+
+export type AnimalType = typeof ANIMALS;
 
 interface Props {
   children?: ReactNode;
@@ -9,7 +11,7 @@ interface Props {
 
 const SearchParams: FC<Props> = () => {
   const [location, setLocation] = useState<string>("");
-  const [animal, setAnimal] = useState<typeof ANIMALS[number]>("");
+  const [animal, setAnimal] = useState<AnimalType[number]>("");
   const [breed, setBreed] = useState<string>("");
 
   const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
