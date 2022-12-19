@@ -8,6 +8,7 @@ export interface DataI {
     breed: string;
     city: string;
     state: string;
+    description: string;
   }[];
 }
 

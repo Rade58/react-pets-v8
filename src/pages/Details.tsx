@@ -37,6 +37,8 @@ const Details: FC<Props> = () => {
         <h1>{pet.name}</h1>
         <h2>
           {pet.animal} - {pet.breed} - {pet.city} - {pet.state}
+          <button>Adopt {pet.name}</button>
+          <p>{pet.description}</p>
         </h2>
       </div>
     </div>
