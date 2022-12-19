@@ -2,6 +2,8 @@ import { FC, ReactNode, useState, useEffect } from "react";
 import useBreedList from "../hooks/useBreedList";
 import { PropsI as PetsPropsI } from "../components/Pets";
 import Results from "../components/Results";
+import { useQuery } from "@tanstack/react-query";
+import fetchSearch, { QueryArgs } from "../lib/query-functions/fetchSearch";
 
 export const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
@@ -12,23 +14,42 @@ interface Props {
 }
 
 const SearchParams: FC<Props> = () => {
-  const [location, setLocation] = useState<string>("");
-  const [animal, setAnimal] = useState<AnimalType[number]>("");
-  const [breed, setBreed] = useState<string>("");
+  // const [location, setLocation] = useState<string>("");
+  // const [breed, setBreed] = useState<string>("");
+  // const [animal, setAnimal] = useState<AnimalType[number]>("");
 
-  const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
+  const [{ breed, location, animal }, setBreedAndLoactionParams] = useState<{
+    breed: string;
+    location: string;
+    animal: AnimalType[number];
+  }>({
+    breed: "",
+    location: "",
+    animal: "",
+  });
 
-  console.log({ pets });
+  // const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
+
+  const { data } = useQuery<
+    {
+      pets: PetsPropsI["pets"];
+    },
+    unknown,
+    {
+      pets: PetsPropsI["pets"];
+    },
+    [string, QueryArgs]
+  >(["pet-search", { animal, breed, location }], fetchSearch);
 
   const { breedList: breeds, status: breedsStatus } = useBreedList(animal);
 
-  useEffect(() => {
+  /* useEffect(() => {
     //
     //
     requestPets().catch(() => {});
-  }, []); // eslint-disable-line
+  }, []); */ // eslint-disable-line
 
-  async function requestPets() {
+  /* async function requestPets() {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
@@ -44,24 +65,42 @@ const SearchParams: FC<Props> = () => {
     });
 
     // setBreeds(brrs);
-  }
+  } */
 
   return (
     <div className="search-params">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          requestPets().catch(() => {});
+          // requestPets().catch(() => {});
+          // THIS IS POSSIBLE ONLY IN CASE
+          // WHEN YOUR FORM CONTROLS HAVE name
+          // ATTRIBUTE
+
+          const formData = new FormData(e.currentTarget);
+          const ob = {
+            location: `${(formData.get("location") as string) || ""}`,
+            breed: `${(formData.get("breed") as string) || ""}`,
+            animal: `${
+              (formData.get("animal") as string) || ""
+            }` as AnimalType[number],
+          };
+
+          //
+
+          setBreedAndLoactionParams(ob);
         }}
       >
         <label htmlFor="location">
           Location
           <input
-            onChange={({ target: { value } }) => {
-              setLocation(value);
-            }}
+            // onChange={({ target: { value } }) => {
+            //   // setLocation(value);
+
+            // }}
             id="location"
-            value={location}
+            name="location"
+            // value={location}
             placeholder="Location"
           />
         </label>
@@ -71,10 +110,10 @@ const SearchParams: FC<Props> = () => {
             name="animal"
             id="animal"
             value={animal}
-            onChange={({ target: { value } }) => {
-              setAnimal(value as typeof ANIMALS[number]);
-              setBreed("");
-            }}
+            // onChange={({ target: { value } }) => {
+            //   // setAnimal(value as typeof ANIMALS[number]);
+            //   // setBreed("");
+            // }}
           >
             {ANIMALS.map((an) => {
               return (
@@ -92,10 +131,11 @@ const SearchParams: FC<Props> = () => {
             disabled={breedsStatus !== "success"}
             name="breed"
             id="breed"
-            value={breed}
-            onChange={({ target: { value } }) => {
-              setBreed(value);
-            }}
+            // value={breed}
+            // onChange={({ target: { value } }) => {
+            //   // setBreed(value);
+
+            // }}
           >
             {breeds.map((br, i) => {
               return (
@@ -109,7 +149,7 @@ const SearchParams: FC<Props> = () => {
         <button>Submit</button>
       </form>
       {/* <Pets pets={pets} /> */}
-      <Results pets={pets} />
+      <Results pets={data?.pets || []} />
     </div>
   );
 };
