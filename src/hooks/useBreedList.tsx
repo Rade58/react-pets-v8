@@ -15,7 +15,9 @@ const localCache: Record<AnimalType[number], string[] | undefined> = {
 export default function useBreedList(animal: AnimalType[number]) {
   const [breedList, setBreedList] = useState<string[] | undefined>([]);
 
-  const [status, setStatus] = useState<"loading" | "unloaded">("unloaded");
+  const [status, setStatus] = useState<"loading" | "unloaded" | "loaded">(
+    "unloaded"
+  );
 
   useEffect(() => {
     if (!animal) {
@@ -37,6 +39,9 @@ export default function useBreedList(animal: AnimalType[number]) {
       const json: { breeds: string[] | undefined } = await res.json();
 
       localCache[animal] = json.breeds || [];
+
+      setBreedList(localCache[animal]);
+      setStatus("loaded");
     }
   });
 }
