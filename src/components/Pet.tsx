@@ -2,6 +2,7 @@
 // import React from "react";
 
 import type { ReactElement, FC } from "react";
+import { Link } from "react-router-dom";
 
 export interface PropsI {
   id: string;
@@ -21,7 +22,8 @@ const Pet: FC<PropsI> = ({ id, name, animal, breed, images, location }) => {
   }
 
   return (
-    <a href={`/details/${id}`} className="pet">
+    // <a href={`/details/${id}`} className="pet">
+    <Link to={`/details/${id}`} className="pet">
       <div className="image-container">
         <img src={hero} alt={name} />
       </div>
@@ -31,7 +33,8 @@ const Pet: FC<PropsI> = ({ id, name, animal, breed, images, location }) => {
           {animal} - {breed} - {location}
         </h2>
       </div>
-    </a>
+    </Link>
+    // </a>
   );
   /* 
   return React.createElement("div", {}, [
