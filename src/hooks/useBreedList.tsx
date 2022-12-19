@@ -43,5 +43,5 @@ export default function useBreedList(animal: AnimalType[number]) {
       setBreedList(localCache[animal]);
       setStatus("loaded");
     }
-  });
+  }, [animal]);
 }
