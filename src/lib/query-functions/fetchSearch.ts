@@ -28,7 +28,9 @@ const fetchSearch: QueryFunction<DataI, [string, QueryArgs]> = async ({
 
   // IT IS REQUIRED TO THROW AN ERROR ON BAD REQUEST
   if (!apiRes.ok) {
-    throw new Error(`/pets/${animal} fetch not ok`);
+    throw new Error(
+      `pet search fetch not ok - ${animal}, ${location}, ${breed}`
+    );
   }
 
   return apiRes.json() as Promise<DataI>;
