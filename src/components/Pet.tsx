@@ -7,6 +7,8 @@ export interface PropsI {
   name: string;
   animal: string;
   breed: string;
+  images: string[];
+  location: string;
   children?: ReactElement;
 }
 

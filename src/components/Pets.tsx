@@ -11,6 +11,10 @@ const Pets: FC<PropsI> = ({ pets }) => {
   return (
     <>
       {pets.map((props) => {
+        // I DID HERE SPREADING OF PROPS
+        // WHICH IS VERY IMPLICIT
+        // IT IS NOT GOOD, YOU SHOULD BE MORE EXPLICIT
+        // BUT I'LL LEAVE THIS HERE
         return <Pet {...props} key={props.id} />;
       })}
     </>

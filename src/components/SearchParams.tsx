@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState, useEffect } from "react";
-import useBreedList from "./hooks/useBreedList";
-import Pets, { PropsI as PetsPropsI } from "./Pets";
+import useBreedList from "../hooks/useBreedList";
+// import Pets, { PropsI as PetsPropsI } from "./Pets";
+import Results from "./Results";
 
 export const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
@@ -106,7 +107,8 @@ const SearchParams: FC<Props> = () => {
         </label>
         <button>Submit</button>
       </form>
-      <Pets pets={pets} />
+      {/* <Pets pets={pets} /> */}
+      <Results pets={pets} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import type { AnimalType } from "../SearchParams";
+import type { AnimalType } from "../components/SearchParams";
 // import { ANIMALS } from "../SearchParams";
 
 const localCache: Record<AnimalType[number], string[] | undefined> = {

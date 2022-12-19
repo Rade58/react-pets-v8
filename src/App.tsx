@@ -3,7 +3,7 @@
 // import ReactDOM from "react-dom";
 // import { createElement } from "react";
 import { createRoot } from "react-dom/client";
-import SearchParams from "./SearchParams";
+import SearchParams from "./components/SearchParams";
 // import Pet from "./Pet";
 // import Pets from "./Pets";
 
