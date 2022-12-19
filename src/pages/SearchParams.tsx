@@ -16,16 +16,14 @@ interface Props {
 const SearchParams: FC<Props> = () => {
   // const [location, setLocation] = useState<string>("");
   // const [breed, setBreed] = useState<string>("");
-  // const [animal, setAnimal] = useState<AnimalType[number]>("");
+  const [animal, setAnimal] = useState<AnimalType[number]>("");
 
-  const [{ breed, location, animal }, setBreedAndLoactionParams] = useState<{
+  const [{ breed, location }, setBreedAndLoactionParams] = useState<{
     breed: string;
     location: string;
-    animal: AnimalType[number];
   }>({
     breed: "",
     location: "",
-    animal: "",
   });
 
   // const [pets, setPets] = useState<PetsPropsI["pets"]>([]);
@@ -81,9 +79,6 @@ const SearchParams: FC<Props> = () => {
           const ob = {
             location: `${(formData.get("location") as string) || ""}`,
             breed: `${(formData.get("breed") as string) || ""}`,
-            animal: `${
-              (formData.get("animal") as string) || ""
-            }` as AnimalType[number],
           };
 
           //
@@ -110,10 +105,10 @@ const SearchParams: FC<Props> = () => {
             name="animal"
             id="animal"
             value={animal}
-            // onChange={({ target: { value } }) => {
-            //   // setAnimal(value as typeof ANIMALS[number]);
-            //   // setBreed("");
-            // }}
+            onChange={({ target: { value } }) => {
+              setAnimal(value as typeof ANIMALS[number]);
+              // setBreed("");
+            }}
           >
             {ANIMALS.map((an) => {
               return (
