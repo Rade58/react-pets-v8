@@ -20,6 +20,7 @@ const fetchPet: QueryFunction<DataI, [string, string]> = async ({
 
   const apiRes = await fetch(`http://pets-v2.dev-apis.com/pets?id=${id}`);
 
+  // IT IS REQUIRED TO THROW AN ERROR ON BAD REQUEST
   if (!apiRes.ok) {
     throw new Error(`/details/${id} fetch not ok`);
   }
