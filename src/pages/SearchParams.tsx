@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState, useEffect } from "react";
 import useBreedList from "../hooks/useBreedList";
-import { PropsI as PetsPropsI } from "./Pets";
-import Results from "./Results";
+import { PropsI as PetsPropsI } from "../components/Pets";
+import Results from "../components/Results";
 
 export const ANIMALS = ["", "bird", "cat", "dog", "rabit", "reptile"] as const;
 
