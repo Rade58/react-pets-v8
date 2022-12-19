@@ -32,11 +32,11 @@ if (container) {
   const App = () => {
     return (
       <BrowserRouter>
-        {/* <div> */}
-        <h1>Adopt Some Pets!</h1>
-        {/* <SearchParams /> */}
-        {/* <RouterProvider router={router} /> */}
-        {/* </div> */}
+        <div>
+          <h1>Adopt Some Pets!</h1>
+          {/* <SearchParams /> */}
+          {/* <RouterProvider router={router} /> */}
+        </div>
         <Routes>
           <Route path="/details/:id" element={<DetailsPage />} />
           <Route path="/" element={<SearchParamsPage />} />
