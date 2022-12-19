@@ -88,7 +88,8 @@ const SearchParams: FC<Props> = () => {
         <label htmlFor="breed">
           Breed
           <select
-            disabled={breedsStatus !== "loaded"}
+            // disabled={breedsStatus !== "loaded"}
+            disabled={breedsStatus !== "success"}
             name="breed"
             id="breed"
             value={breed}
