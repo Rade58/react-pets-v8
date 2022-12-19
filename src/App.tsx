@@ -9,6 +9,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Link,
 } from "react-router-dom";
 // import Pet from "./Pet";
 // import Pets from "./Pets";
@@ -32,11 +33,13 @@ if (container) {
   const App = () => {
     return (
       <BrowserRouter>
-        <div>
-          <h1>Adopt Some Pets!</h1>
-          {/* <SearchParams /> */}
-          {/* <RouterProvider router={router} /> */}
-        </div>
+        <header>
+          <Link to="/">
+            <h1>Adopt Some Pets!</h1>
+          </Link>
+        </header>
+        {/* <SearchParams /> */}
+        {/* <RouterProvider router={router} /> */}
         <Routes>
           <Route path="/details/:id" element={<DetailsPage />} />
           <Route path="/" element={<SearchParamsPage />} />
