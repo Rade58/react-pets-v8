@@ -15,6 +15,9 @@ export interface QueryArgs {
 const fetchSearch: QueryFunction<DataI, [string, QueryArgs]> = async ({
   queryKey,
 }) => {
+  // FIRST ELEMENT OF THE ARRAY IS ALWAYS CACHING KEY
+  // (A KEY THAT IS USED FOR PUTING AND FETCHING FROM CHCHE)
+
   // INSTEAD OF SINGLE VALUE (ONE KEY)
   // WE CAN PASS OBJECT ON THE PLACE OF SECOND QUERY KEY
   const { animal, breed, location } = queryKey[1]; //
