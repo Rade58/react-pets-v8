@@ -4,8 +4,8 @@
 // import { createElement } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  createBrowserRouter,
-  RouterProvider,
+  // createBrowserRouter,
+  // RouterProvider,
   BrowserRouter,
   Routes,
   Route,
@@ -13,10 +13,23 @@ import {
 } from "react-router-dom";
 // import Pet from "./Pet";
 // import Pets from "./Pets";
+//
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+//
+
 import SearchParamsPage from "./pages/SearchParams";
 import DetailsPage from "./pages/Details";
 
 const container = document.getElementById("root");
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
 /* const router = createBrowserRouter([
   {
@@ -33,17 +46,19 @@ if (container) {
   const App = () => {
     return (
       <BrowserRouter>
-        <header>
-          <Link to="/">
-            <h1>Adopt Some Pets!</h1>
-          </Link>
-        </header>
-        {/* <SearchParams /> */}
-        {/* <RouterProvider router={router} /> */}
-        <Routes>
-          <Route path="/details/:id" element={<DetailsPage />} />
-          <Route path="/" element={<SearchParamsPage />} />
-        </Routes>
+        <QueryClientProvider client={queryClient}>
+          <header>
+            <Link to="/">
+              <h1>Adopt Some Pets!</h1>
+            </Link>
+          </header>
+          {/* <SearchParams /> */}
+          {/* <RouterProvider router={router} /> */}
+          <Routes>
+            <Route path="/details/:id" element={<DetailsPage />} />
+            <Route path="/" element={<SearchParamsPage />} />
+          </Routes>
+        </QueryClientProvider>
       </BrowserRouter>
     );
 
