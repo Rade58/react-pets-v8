@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import type { AnimalType } from "../SearchParams";
-import { ANIMALS } from "../SearchParams";
+// import { ANIMALS } from "../SearchParams";
 
 const localCache: Record<AnimalType[number], string[] | undefined> = {
   bird: undefined,
@@ -44,4 +44,6 @@ export default function useBreedList(animal: AnimalType[number]) {
       setStatus("loaded");
     }
   }, [animal]);
+
+  return { breedList, status };
 }
