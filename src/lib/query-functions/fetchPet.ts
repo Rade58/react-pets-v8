@@ -9,6 +9,7 @@ export interface DataI {
     city: string;
     state: string;
     description: string;
+    images: string[];
   }[];
 }
 

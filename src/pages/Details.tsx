@@ -4,6 +4,7 @@ import type { FC, ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchPet, { DataI } from "../lib/query-functions/fetchPet";
+import Corousel from "../components/Carousel";
 
 interface Props {
   children?: ReactNode;
@@ -33,6 +34,7 @@ const Details: FC<Props> = () => {
 
   return (
     <div className="details">
+      <Corousel images={pet.images} />
       <div>
         <h1>{pet.name}</h1>
         <h2>
