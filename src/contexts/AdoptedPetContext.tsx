@@ -1,8 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
-import type { PropsI } from "../components/Pet";
+import type { DataI } from "../lib/query-functions/fetchPet";
 
-export type DataType = Omit<PropsI, "children">;
+export type DataType = Omit<DataI["pets"][number], "children">;
 
 export type ContextData = [DataType, Dispatch<SetStateAction<DataType>>];
 
@@ -11,8 +11,10 @@ export const defaultData: DataType = {
   breed: "",
   id: "",
   images: [],
-  location: "",
   name: "",
+  city: "",
+  description: "",
+  state: "",
 };
 
 const AdoptedPetContext = createContext<ContextData>([
