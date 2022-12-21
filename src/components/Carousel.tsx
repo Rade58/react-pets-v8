@@ -5,12 +5,23 @@ interface PropsI {
 }
 
 class Corousel extends Component<PropsI> {
+  /* constructor(args: PropsI) {
+    super(args);
+
+    this.handleIndexClick = this.handleIndexClick.bind(this);
+  } */
+
   state = {
     active: 0,
   };
 
   static defaultProps = {
     images: ["http:://pets-images.dev-apis.com/pets/none.jpg"],
+  };
+
+  // ARROW FUNCTION BECAUSE I WANT this BINDED
+  handleIndexClick = () => {
+    console.log(this);
   };
 
   render() {
@@ -23,7 +34,9 @@ class Corousel extends Component<PropsI> {
         <div className="carousel-smaller">
           {images.map((photo, i) => {
             return (
+              // eslint-disable-next-line
               <img
+                onClick={this.handleIndexClick}
                 src={photo}
                 key={photo}
                 className={i === active ? "active" : ""}
