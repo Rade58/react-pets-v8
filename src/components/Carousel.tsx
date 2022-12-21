@@ -1,7 +1,8 @@
-import { Component, MouseEventHandler } from "react";
+import { Component, MouseEventHandler, ReactNode } from "react";
 
 interface PropsI {
   images: string[];
+  children?: ReactNode;
 }
 
 interface StateI {
