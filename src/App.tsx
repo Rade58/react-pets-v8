@@ -21,7 +21,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import SearchParamsPage from "./pages/SearchParams";
 import DetailsPage from "./pages/Details";
-import AdoptedPetContext, { DataType } from "./contexts/AdoptedPetContext";
+import AdoptedPetContext, {
+  DataType,
+  defaultData,
+} from "./contexts/AdoptedPetContext";
 
 const container = document.getElementById("root");
 
@@ -47,7 +50,7 @@ const queryClient = new QueryClient({
 
 if (container) {
   const App = () => {
-    const adoptedPet = useState<DataType | null>(null);
+    const adoptedPet = useState<DataType>(defaultData);
 
     return (
       <BrowserRouter>

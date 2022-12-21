@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import type { FC, ReactNode } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchPet, { DataI } from "../lib/query-functions/fetchPet";
 import Corousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
 import Modal from "../components/Modal";
+import AdoptedPetContext from "../contexts/AdoptedPetContext";
 
 interface Props {
   children?: ReactNode;
@@ -13,6 +14,10 @@ interface Props {
 
 const Details: FC<Props> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   const { id } = useParams<"id">();
 
