@@ -17,6 +17,12 @@ const Modal: FC<Props> = ({ children }) => {
     if (modalRoot && elRef.current) {
       modalRoot.appendChild(elRef.current);
     }
+
+    return () => {
+      if (modalRoot && elRef.current) {
+        modalRoot.removeChild(elRef.current);
+      }
+    };
   }, []);
 
   return createPortal(<div>{children}</div>, elRef.current);
