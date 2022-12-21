@@ -1,17 +1,19 @@
-/* eslint jsx-a11y/anchor-is-valid: 1 */
-import React from "react";
+import { useState } from "react";
 import type { FC, ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchPet, { DataI } from "../lib/query-functions/fetchPet";
 import Corousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
+import Modal from "../components/Modal";
 
 interface Props {
   children?: ReactNode;
 }
 
 const Details: FC<Props> = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   const { id } = useParams<"id">();
 
   const results = useQuery(["details", id || ""], fetchPet);
@@ -40,8 +42,19 @@ const Details: FC<Props> = () => {
         <h1>{pet.name}</h1>
         <h2>
           {pet.animal} - {pet.breed} - {pet.city} - {pet.state}
-          <button>Adopt {pet.name}</button>
+          <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
           <p>{pet.description}</p>
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>Would you like to adopt {pet.name}?</h1>
+                <div className="buttons">
+                  <button>Yes</button>
+                  <button onClick={() => setShowModal(false)}>No</button>
+                </div>
+              </div>
+            </Modal>
+          ) : null}
         </h2>
       </div>
     </div>
