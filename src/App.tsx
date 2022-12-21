@@ -14,11 +14,14 @@ import {
 // import Pet from "./Pet";
 // import Pets from "./Pets";
 //
+import { useState } from "react";
+//
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 //
 
 import SearchParamsPage from "./pages/SearchParams";
 import DetailsPage from "./pages/Details";
+import AdoptedPetContext, { DataType } from "./contexts/AdoptedPetContext";
 
 const container = document.getElementById("root");
 
@@ -44,20 +47,24 @@ const queryClient = new QueryClient({
 
 if (container) {
   const App = () => {
+    const adoptedPet = useState<DataType | null>(null);
+
     return (
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <header>
-            <Link to="/">
-              <h1>Adopt Some Pets!</h1>
-            </Link>
-          </header>
-          {/* <SearchParams /> */}
-          {/* <RouterProvider router={router} /> */}
-          <Routes>
-            <Route path="/details/:id" element={<DetailsPage />} />
-            <Route path="/" element={<SearchParamsPage />} />
-          </Routes>
+          <AdoptedPetContext.Provider value={adoptedPet}>
+            <header>
+              <Link to="/">
+                <h1>Adopt Some Pets!</h1>
+              </Link>
+            </header>
+            {/* <SearchParams /> */}
+            {/* <RouterProvider router={router} /> */}
+            <Routes>
+              <Route path="/details/:id" element={<DetailsPage />} />
+              <Route path="/" element={<SearchParamsPage />} />
+            </Routes>
+          </AdoptedPetContext.Provider>
         </QueryClientProvider>
       </BrowserRouter>
     );
