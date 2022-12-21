@@ -1,10 +1,14 @@
-import { Component } from "react";
+import { Component, MouseEventHandler } from "react";
 
 interface PropsI {
   images: string[];
 }
 
-class Corousel extends Component<PropsI> {
+interface StateI {
+  active: number;
+}
+
+class Corousel extends Component<PropsI, StateI> {
   /* constructor(args: PropsI) {
     super(args);
 
@@ -20,8 +24,14 @@ class Corousel extends Component<PropsI> {
   };
 
   // ARROW FUNCTION BECAUSE I WANT this BINDED
-  handleIndexClick = () => {
-    console.log(this);
+  handleIndexClick: MouseEventHandler<HTMLImageElement> = (e) => {
+    // console.log(this);
+    this.setState((prev) => {
+      return {
+        ...prev,
+        active: parseInt(e.currentTarget.dataset["index"] || ""),
+      };
+    });
   };
 
   render() {
@@ -41,6 +51,7 @@ class Corousel extends Component<PropsI> {
                 key={photo}
                 className={i === active ? "active" : ""}
                 alt="animal thumbnail"
+                data-index={i}
               />
             );
           })}
