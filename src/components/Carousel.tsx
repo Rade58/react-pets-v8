@@ -35,6 +35,7 @@ class Corousel extends Component<PropsI, StateI> {
   };
 
   render() {
+    // CAN'T USE HOOKS IN HERE
     const { active } = this.state;
     const { images } = this.props;
 
