@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchPet, { DataI } from "../lib/query-functions/fetchPet";
 import Corousel from "../components/Carousel";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 interface Props {
   children?: ReactNode;
@@ -47,4 +48,13 @@ const Details: FC<Props> = () => {
   );
 };
 
-export default Details;
+function DetailsErrorBoundry() {
+  return (
+    <ErrorBoundary>
+      <Details />
+    </ErrorBoundary>
+  );
+}
+
+// export default Details;
+export default DetailsErrorBoundry;
