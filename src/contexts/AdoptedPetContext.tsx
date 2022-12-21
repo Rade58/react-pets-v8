@@ -2,7 +2,7 @@ import { createContext, Dispatch, SetStateAction } from "react";
 
 import type { DataI } from "../lib/query-functions/fetchPet";
 
-export type DataType = Omit<DataI["pets"][number], "children">;
+export type DataType = DataI["pets"][number];
 
 export type ContextData = [DataType, Dispatch<SetStateAction<DataType>>];
 
