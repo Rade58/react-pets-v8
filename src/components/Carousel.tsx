@@ -6,6 +6,7 @@ interface PropsI {
 
 interface StateI {
   active: number;
+  a: string;
 }
 
 class Corousel extends Component<PropsI, StateI> {
@@ -17,6 +18,7 @@ class Corousel extends Component<PropsI, StateI> {
 
   state = {
     active: 0,
+    a: "",
   };
 
   static defaultProps = {
@@ -26,11 +28,9 @@ class Corousel extends Component<PropsI, StateI> {
   // ARROW FUNCTION BECAUSE I WANT this BINDED
   handleIndexClick: MouseEventHandler<HTMLImageElement> = (e) => {
     // console.log(this);
-    this.setState((prev) => {
-      return {
-        ...prev,
-        active: parseInt(e.currentTarget.dataset["index"] || ""),
-      };
+
+    this.setState({
+      active: +(e.currentTarget.dataset["index"] || "0"),
     });
   };
 
