@@ -48,10 +48,10 @@ const Details: FC<Props> = () => {
   );
 };
 
-function DetailsErrorBoundry() {
+function DetailsErrorBoundry(props: Props) {
   return (
     <ErrorBoundary>
-      <Details />
+      <Details {...props} />
     </ErrorBoundary>
   );
 }
