@@ -51,6 +51,7 @@ const DetailsPage = lazy(() => import("./pages/Details"));
 
 // BUT WE ALSO NEED RO USE `Suspense` (TO SHOW SOMETHING
 // DURING WAITING FOR THE LAY STUFF TO LOAD)
+// WE CAN SHOW SOME SPINNER WHILE AS A FALLBACK
 
 const container = document.getElementById("root");
 
@@ -80,7 +81,14 @@ if (container) {
 
     return (
       <BrowserRouter>
-        <Suspense>
+        {/* FOR CODE SPLITTING */}
+        <Suspense
+          fallback={
+            <div className="loading-pane">
+              <h2 className="loader">🖕</h2>
+            </div>
+          }
+        >
           <QueryClientProvider client={queryClient}>
             <AdoptedPetContext.Provider value={adoptedPet}>
               <header>
