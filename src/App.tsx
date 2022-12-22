@@ -36,7 +36,7 @@ import AdoptedPetContext, {
 // AND lazy WILL LOA LAZYLY THAT THING
 
 // WE REMOVED THIS BECAUSE WE WANT TO LAZY LOAD THEM
-// W DON'T WANT THESE TO BE LOADED IN SAME BUNDLE
+// WE DON'T WANT THESE TO BE LOADED IN SAME BUNDLE
 // import SearchParamsPage from "./pages/SearchParams";
 // import DetailsPage from "./pages/Details";
 // AS YOU CAN SEE
