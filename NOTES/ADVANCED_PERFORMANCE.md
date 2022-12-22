@@ -226,4 +226,7 @@ export default DetailsErrorBoundry;
 
 ```
 
+# SERVER SIDE RENDERING
+
+
 
