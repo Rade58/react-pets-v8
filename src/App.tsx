@@ -49,6 +49,8 @@ const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 //
 
+// BUT WE ALSO NEED RO USE `Suspense`
+
 const container = document.getElementById("root");
 
 const queryClient = new QueryClient({
@@ -77,21 +79,23 @@ if (container) {
 
     return (
       <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <AdoptedPetContext.Provider value={adoptedPet}>
-            <header>
-              <Link to="/">
-                <h1>Adopt Some Pets!</h1>
-              </Link>
-            </header>
-            {/* <SearchParams /> */}
-            {/* <RouterProvider router={router} /> */}
-            <Routes>
-              <Route path="/details/:id" element={<DetailsPage />} />
-              <Route path="/" element={<SearchParamsPage />} />
-            </Routes>
-          </AdoptedPetContext.Provider>
-        </QueryClientProvider>
+        <Suspense>
+          <QueryClientProvider client={queryClient}>
+            <AdoptedPetContext.Provider value={adoptedPet}>
+              <header>
+                <Link to="/">
+                  <h1>Adopt Some Pets!</h1>
+                </Link>
+              </header>
+              {/* <SearchParams /> */}
+              {/* <RouterProvider router={router} /> */}
+              <Routes>
+                <Route path="/details/:id" element={<DetailsPage />} />
+                <Route path="/" element={<SearchParamsPage />} />
+              </Routes>
+            </AdoptedPetContext.Provider>
+          </QueryClientProvider>
+        </Suspense>
       </BrowserRouter>
     );
 
