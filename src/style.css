@@ -12,14 +12,18 @@ AND CLASSES WILL BE REORGANIZED ON SAVE */
 
 
 
-/* EFINING SOME BASE CLASS */
+/* EFINING SOME BASE CLASS (YOU WOULD DEFINE ON TAG SELECTORS) */
 @layer base {
-  .humongous {
+  body {
 
     /* IT WILL STILL WORK BUT YOU SHOULDN'T MIX NORMAL CSS AND APPLY */
 
-    width: 1600px;
-    @apply border-4 border-purple-600;
+    /* width: 1600px; */
+    /* @apply border-4 border-purple-600; */
+
+
+    /* FOR EXAMPLE YOU CAN DEFINE FONT FAMILY FOR BODY IN HERE */
+
   }
 }
 
