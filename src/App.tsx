@@ -24,11 +24,27 @@ import AdoptedPetContext, {
   defaultData,
 } from "./contexts/AdoptedPetContext";
 
+// THESE ABOVE ARE STATIC IMPORTS AND THEY WILL BE INCLUDED
+// INSIDE OR BUNDLE
+
+// BUT IF WE WANT TO HAVE CHUNKS OF JAVASCRIPT LOADED
+// AFTER INITIAL BUNDLE IS LOADED (WHEN WE WONT THAT TO BE LOADED
+// JUST BEFORE RENDERING, WE WILL USE lazy AND dynamic import)
+
+// DYNAMIC IMPORT WILL IMPORT THE COMPONENT (OR LIBRARY, OR NYTHING ELSE
+// ON THE SPOT WHERE THAT IMPORT IS BEING USED)
+// AND lazy WILL LOA LAZYLY THAT THING
+
 // WE REMOVED THIS BECAUSE WE WANT TO LAZY LOAD THEM
 // W DON'T WANT THESE TO BE LOADED IN SAME BUNDLE
 // import SearchParamsPage from "./pages/SearchParams";
 // import DetailsPage from "./pages/Details";
 // AS YOU CAN SEE
+
+// OK, LETS INTERPRET THIS
+// WE CAN SAY IT LIKE THIS:
+// "IF SOMETHING TRIES TO RENDER Details or SearchParams COMPONENTS
+// PANIC AND LOAD DETAILS (SO IT WILL BE IMPORTED WHEN JUST BEFORE RENDERING)"
 const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 //
