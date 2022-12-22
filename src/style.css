@@ -12,6 +12,23 @@ AND CLASSES WILL BE REORGANIZED ON SAVE */
 
 
 
+/* DEFINE CLASS FOR YOUTR TILWIND COMPONENT */
+@layer components {
+  .search-input {
+    @apply w-60 mb-5 block;    
+  }
+}
+
+/* DEFINE UTILITY CLASS */
+@layer utilities  {
+  
+  /* I WOULD PUT THIS CLASS ON DISAABLED BUTTON OR INPUT */
+  .grayed-out-disabled {
+    @apply disabled:opacity-50;
+  }
+}
+
+
 /* * {
   box-sizing: border-box;
   color: #333;
