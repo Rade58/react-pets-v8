@@ -51,6 +51,11 @@ import AdoptedPetContext, {
 // WE CAN SAY IT LIKE THIS:
 // "IF SOMETHING TRIES TO RENDER Details or SearchParams COMPONENTS
 // PANIC AND LOAD THESE (SO IT WILL BE IMPORTED WHEN JUST BEFORE RENDERING)"
+
+// NOTICE, THE ARGUMENT OF lazt IS A FUNCTION THAT RETURNS
+// DYNAMIC IMPORT, ONCE THAT FUNCTION IS INVOKED
+// IMPORT WILL HAPPEN
+
 const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 //
