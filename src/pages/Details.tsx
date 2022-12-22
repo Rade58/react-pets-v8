@@ -1,12 +1,15 @@
-import { useContext, useState } from "react";
+import { lazy, Suspense, useContext, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchPet, { DataI } from "../lib/query-functions/fetchPet";
 import Corousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
-import Modal from "../components/Modal";
 import AdoptedPetContext from "../contexts/AdoptedPetContext";
+//
+// import Modal from "../components/Modal";
+const Modal = lazy(() => import("../components/Modal"));
+// WE DON'T NEED Suspense BECAUSE WE DON'T WNT TO SHOW ANYTHING ELSE WHILE WE WAIT FOR MODAL TO LOAD
 
 interface Props {
   children?: ReactNode;
@@ -81,5 +84,4 @@ function DetailsErrorBoundry(props: Props) {
   );
 }
 
-// export default Details;
 export default DetailsErrorBoundry;
