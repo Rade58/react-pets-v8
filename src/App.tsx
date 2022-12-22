@@ -1,5 +1,5 @@
 // EVEN IN HERE WE DON'T NEED REACT BECAUSE VITE DOES THAT FOR USE
-// import React from "react";
+import { lazy, Suspense } from "react";
 // import ReactDOM from "react-dom";
 // import { createElement } from "react";
 import { createRoot } from "react-dom/client";
@@ -18,13 +18,20 @@ import { useState } from "react";
 //
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 //
-
-import SearchParamsPage from "./pages/SearchParams";
-import DetailsPage from "./pages/Details";
+//
 import AdoptedPetContext, {
   DataType,
   defaultData,
 } from "./contexts/AdoptedPetContext";
+
+// WE REMOVED THIS BECAUSE WE WANT TO LAZY LOAD THEM
+// W DON'T WANT THESE TO BE LOADED IN SAME BUNDLE
+// import SearchParamsPage from "./pages/SearchParams";
+// import DetailsPage from "./pages/Details";
+// AS YOU CAN SEE
+const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
+const DetailsPage = lazy(() => import("./pages/Details"));
+//
 
 const container = document.getElementById("root");
 
