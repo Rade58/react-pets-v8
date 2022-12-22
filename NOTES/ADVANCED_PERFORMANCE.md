@@ -267,3 +267,13 @@ touch src/ServerApp.tsx
 ```tsx
 
 ```
+
+**LETS ADD COUPLE MORE SCRIPTS**
+
+```
+code package.json
+```
+
+**LETS BUILD OUR NODEJS SERVER**
+
+
