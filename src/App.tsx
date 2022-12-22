@@ -49,7 +49,8 @@ const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 //
 
-// BUT WE ALSO NEED RO USE `Suspense`
+// BUT WE ALSO NEED RO USE `Suspense` (TO SHOW SOMETHING
+// DURING WAITING FOR THE LAY STUFF TO LOAD)
 
 const container = document.getElementById("root");
 
