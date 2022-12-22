@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* I INSTALLED TAILWIND BUT I DIDN'T USE IT */
+/* LEAVING THESE STYLES BELLOW */
+
 * {
   box-sizing: border-box;
   color: #333;
