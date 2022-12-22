@@ -44,7 +44,7 @@ const Details: FC<Props> = () => {
     <div className="details">
       <Corousel images={pet.images} />
       <div>
-        <h1>{pet.name}</h1>
+        <h1 className="humongous">{pet.name}</h1>
         <h2>
           {pet.animal} - {pet.breed} - {pet.city} - {pet.state}
           <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
