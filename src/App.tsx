@@ -32,29 +32,31 @@ const App = () => {
   const adoptedPet = useState<DataType>(defaultData);
 
   return (
-    <BrowserRouter>
-      <Suspense
-        fallback={
-          <div className="loading-pane">
-            <h2 className="loader">🖕</h2>
-          </div>
-        }
-      >
-        <QueryClientProvider client={queryClient}>
-          <AdoptedPetContext.Provider value={adoptedPet}>
-            <header>
-              <Link to="/">
-                <h1>Adopt Some Pets!</h1>
-              </Link>
-            </header>
-            <Routes>
-              <Route path="/details/:id" element={<DetailsPage />} />
-              <Route path="/" element={<SearchParamsPage />} />
-            </Routes>
-          </AdoptedPetContext.Provider>
-        </QueryClientProvider>
-      </Suspense>
-    </BrowserRouter>
+    // WE DON'T NEED BROWSER ROUTER
+    // <BrowserRouter>
+
+    <Suspense
+      fallback={
+        <div className="loading-pane">
+          <h2 className="loader">🖕</h2>
+        </div>
+      }
+    >
+      <QueryClientProvider client={queryClient}>
+        <AdoptedPetContext.Provider value={adoptedPet}>
+          <header>
+            <Link to="/">
+              <h1>Adopt Some Pets!</h1>
+            </Link>
+          </header>
+          <Routes>
+            <Route path="/details/:id" element={<DetailsPage />} />
+            <Route path="/" element={<SearchParamsPage />} />
+          </Routes>
+        </AdoptedPetContext.Provider>
+      </QueryClientProvider>
+    </Suspense>
+    // </BrowserRouter>
   );
 };
 

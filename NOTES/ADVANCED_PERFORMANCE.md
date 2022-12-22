@@ -228,5 +228,42 @@ export default DetailsErrorBoundry;
 
 # SERVER SIDE RENDERING
 
+HERE IS WHAT I'M GOING TO DO
 
+```
+code src/App.tsx
+```
 
+```tsx
+
+```
+
+```
+code src/index.html
+```
+
+```html
+
+```
+
+```
+code 
+```
+
+NOW LETS MAKE CLIENTT AND SERVER APP
+
+```
+touch src/ClientApp.tsx
+```
+
+```tsx
+
+```
+
+```
+touch src/ServerApp.tsx
+```
+
+```tsx
+
+```
