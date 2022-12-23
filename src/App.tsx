@@ -12,7 +12,7 @@ import AdoptedPetContext, {
 const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 
-const container = document.getElementById("root");
+// const container = document.getElementById("root");
 
 const queryClient = new QueryClient({
   defaultOptions: {

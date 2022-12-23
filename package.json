@@ -8,7 +8,7 @@
     "dev": "vite",
     "dev-host": "vite --host",
     "build:client": "vite build --outDir ../dist/client",
-    "build:server": "vite build --outDir ../dist/server --ssr src/ServerApp.tsx",
+    "build:server": "vite build --outDir ../dist/server --ssr ServerApp.tsx",
     "build": "npm run build:client && npm run build:server",
     "serve": "node server.js",
     "preview": "vite preview",
