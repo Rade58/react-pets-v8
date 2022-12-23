@@ -477,3 +477,41 @@ npm run build
 ```
 npm run serve
 ```
+
+# EXPERIMENTAL FEATURE OF REACT QUERY THAT ALLOWS IT TO INTERACT WITH Suspense
+
+```
+code package.json
+```
+ADDING THE EXPERIMANTAL FLAG IN THE SCRIPT
+
+```json
+"serve": "node --experimental-fetch server.js",
+```
+
+**ALLOWING REACT QUER TO WORK WITH SUSPENSE**
+
+```
+code src/App.tsx
+```
+
+```tsx
+// ...
+// ...
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+      // ADDED THID
+      suspense: true
+    },
+  },
+});
+
+// ...
+// ...
+
+
+```

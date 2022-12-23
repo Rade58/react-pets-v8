@@ -10,7 +10,7 @@
     "build:client": "vite build --outDir ../dist/client",
     "build:server": "vite build --outDir ../dist/server --ssr ServerApp.tsx",
     "build": "npm run build:client && npm run build:server",
-    "serve": "node server.js",
+    "serve": "node --experimental-fetch server.js",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
