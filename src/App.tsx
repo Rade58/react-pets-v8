@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { createRoot } from "react-dom/client";
+// import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -12,6 +12,7 @@ import AdoptedPetContext, {
 const SearchParamsPage = lazy(() => import("./pages/SearchParams"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 
+// WE WILL USE SO REMOVE THIS
 // const container = document.getElementById("root");
 
 const queryClient = new QueryClient({
@@ -32,7 +33,7 @@ const App = () => {
   const adoptedPet = useState<DataType>(defaultData);
 
   return (
-    // WE DON'T NEED BROWSER ROUTER
+    // WE DON'T NEED BROWSER ROUTER BECAUSE WE WILL BE ROUTE ON SERVER SIDE
     // <BrowserRouter>
 
     <Suspense
