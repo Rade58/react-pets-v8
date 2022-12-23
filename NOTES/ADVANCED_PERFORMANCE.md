@@ -515,3 +515,11 @@ const queryClient = new QueryClient({
 
 
 ```
+
+BUILD AGAIN AND START SERVER
+
+```
+npm run build && npm run serve
+```
+
+IT WON'T WORK (DOESN'T MATTER ANYWAY)
